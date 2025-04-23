@@ -1,22 +1,18 @@
-import React from 'react'
-import { Highlight } from './Highlight'
+import React, { useState, useEffect } from 'react';
+import { DigitBox } from './DigitBox'
 
 
-export const SecondsCounter = () => {
+export const SecondsCounter = (seconds) => {
 
-  let seconds = 0
-  
+  const digits = String(seconds).padStart(6, '0').split('');
 
   return (
     <div className="d-flex justify-content-center align-items-center">
-                <Highlight text= {<i className="fa-regular fa-clock"></i>} />
-                <Highlight text='0' />
-                <Highlight text='0' />
-                <Highlight text='0' />
-                <Highlight text='0' />
-                <Highlight text='0' />
-                <Highlight text={seconds}/>
-            </div>
+      <DigitBox text={<i className="fa-regular fa-clock"></i>} />
+      {digits.map((digit, index) => (
+        <DigitBox key={index} text={digit} />
+      ))}
+    </div>
   )
 }
 

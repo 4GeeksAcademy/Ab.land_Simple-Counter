@@ -11,26 +11,40 @@ import '../styles/index.css'
 // components
 import Home from './components/Home';
 
-/*
+
 import { SecondsCounter } from './components/SecondsCounter';
-import { Highlight } from './components/Highlight';
+import { DigitBox } from './components/DigitBox';
+import { Buttons } from './components/Buttons';
+import { TimeInput } from './components/TimeInput';
 
 
 
 let seconds = 0;
-setInterval( function (){
-  seconds++;
-  if( seconds=== 10){seconds = 0};
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <div className="d-flex justify-content-center align-items-center">
-    <Highlight num = {seconds}/>
-    </div>
-  </React.StrictMode>,
-)}, 1000); */
+let pause = true;
 
+
+setInterval(function () {
+  seconds++;
+
+  let digits = String(seconds).padStart(6, '0').split('');
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <div className='container d-flex flex-column justify-content-center align-items-center'>
+        <div className="d-flex justify-content-center align-items-center">
+          <DigitBox text={<i className="fa-regular fa-clock"></i>} />
+          {digits.map((digit) => <DigitBox text={digit} />)}
+        </div>
+        <Buttons />
+        <TimeInput/>
+
+      </div>
+    </React.StrictMode>,
+  )
+}, 1000);
+
+/*
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Home/>
+    <Home />
   </React.StrictMode>,
-)
+)*/

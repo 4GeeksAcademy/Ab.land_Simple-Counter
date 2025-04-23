@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Highlight = (props) => {
+export const DigitBox = (props) => {
   return (
     <div 
     className='card border-secondary text-bg-dark m-3 text-center'
